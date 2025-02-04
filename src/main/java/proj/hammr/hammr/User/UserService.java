@@ -12,6 +12,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public List<UserEntity> getAllUser() {
+        return userRepository.findAll();
+    }
+
     public void save(UserEntity user) {
         userRepository.save(user);
     }
@@ -29,8 +33,13 @@ public class UserService {
         return user;
     }
 
-    public List<UserEntity> getAllUser() {
-        return userRepository.findAll();
+    public void updateUserInfoById(long id, String name, String password) {
+        UserEntity userToUpdate = this.getById(id);
+        userToUpdate.setName(name);
+        userToUpdate.setPassword(password);
     }
 
+    public void deleteUserById(long id) {
+        userRepository.deleteById(id);
+    } 
 }

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Employee</title>
+<title>User</title>
 </head>
 <body>
 <div class="container my-2" align="center">
 
-<h3>Employee List</h3>
+<h3>User List</h3>
+<a th:href="@{/createuser}">Add User</a>
 	<table style="width:80%" border="1"
 		class = "table table-striped table-responsive-md">
 	<thead>
@@ -20,6 +21,9 @@
     <tr th:each="user : ${allUserList}">
         <td th:text="${user.name}"></td>
         <td th:text="${user.password}"></td>
+		<td> <a th:href="@{/updateuser/{id} (id=${user.id})}">Update</a>
+			 <a th:href="@{/deleteuser/{id} (id=${user.id})}">Delete</a>
+</td>
     </tr>
 </table>
 </tbody>
