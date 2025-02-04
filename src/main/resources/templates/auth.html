@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Employee</title>
+</head>
+<body>
+<div class="container my-2" align="center">
+
+<h3>Employee List</h3>
+	<table style="width:80%" border="1"
+		class = "table table-striped table-responsive-md">
+	<thead>
+<tr>
+	<th>Name</th>
+	<th>Password</th>
+</tr>
+</thead>
+<tbody>
+<table>
+    <tr th:each="user : ${allUserList}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.password}"></td>
+    </tr>
+</table>
+</tbody>
+</table>
+</div>
+</body>
+</html>
