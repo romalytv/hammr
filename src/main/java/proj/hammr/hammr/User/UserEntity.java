@@ -13,6 +13,7 @@ public class UserEntity {
     private long id;
     private String name;
     private String password;
+    private long balance;
 
     public long getId() {
         return id;
@@ -36,6 +37,14 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
 }

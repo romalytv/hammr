@@ -1,12 +1,14 @@
 package proj.hammr.hammr.Auction;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import proj.hammr.hammr.User.UserEntity;
 
 @Entity
 public class AuctionEntity {
@@ -17,6 +19,8 @@ public class AuctionEntity {
     private String lotName;
     private BufferedImage lotImage;
     private long lotPrice;
+    private List<UserEntity> usersOnLot;
+    private UserEntity creatorOfLot;
 
     public UUID getId() {
         return id;
@@ -48,5 +52,21 @@ public class AuctionEntity {
 
     public void setLotPrice(long lotPrice){
         this.lotPrice = lotPrice;
+    }
+
+    public List<UserEntity> getUsersOnLot() {
+        return usersOnLot;
+    }
+
+    public void setUsersOnLot(List<UserEntity> usersOnLot) {
+        this.usersOnLot = usersOnLot;
+    }
+
+    public void setCreatorOfLot(UserEntity creatorOfLot) {
+        this.creatorOfLot = creatorOfLot;
+    }
+
+    public UserEntity getCreatorOfLot() {
+        return creatorOfLot;
     }
 }

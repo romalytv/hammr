@@ -39,6 +39,22 @@ public class UserService {
         userToUpdate.setPassword(password);
     }
 
+    //adds money to balance
+    public void addMoney(long id, long money) {
+        UserEntity userToAddMoney = this.getById(id);
+        long balance = userToAddMoney.getBalance();
+        balance = balance + money;
+        userToAddMoney.setBalance(balance);
+    }
+
+    // user that buys lot (implement Auction)
+    public void buyLot(long id, long cost){
+        UserEntity buyer = this.getById(id);
+        long balance = buyer.getBalance();
+        balance = balance - cost;
+        buyer.setBalance(balance);
+    }
+
     public void deleteUserById(long id) {
         userRepository.deleteById(id);
     } 
