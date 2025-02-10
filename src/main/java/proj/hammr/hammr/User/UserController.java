@@ -47,7 +47,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = "deleteuser/{id}", method=RequestMethod.DELETE)
+    @RequestMapping(value = "deleteuser/{id}", method=RequestMethod.GET)
     public String deleteUserThroughId(@PathVariable(value="id") long id, Model model) {
         userService.deleteUserById(id);
         return "redirect:/home";
