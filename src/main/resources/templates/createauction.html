@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+>
+<head>
+<title>Create Auction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Auction Create Info</h1>
+        <hr>
+        <h2>Create Auction</h2>
+ 
+        <form action="#" th:action="@{/saveauction}" th:object="${auction}" method="POST">
+            <input type="text" th:field="*{lotName}" placeholder="Lot Name">
+            <input type="text" th:field="*{lotPrice}" placeholder="Lot Price">
+            <input type="text" th:field="*{creatorOfLot}" placeholder="CreatorOfLot">
+            <button type="submit">Create Auction</button>
+        </form>
+ 
+        <hr>
+ 
+        <a th:href="@{/home}"> Back to Home</a>
+    </div>
+</body>
+</html>

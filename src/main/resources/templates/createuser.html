@@ -13,15 +13,16 @@
         <hr>
         <h2>Create User</h2>
  
-        <form action="#" th:action="@{/save}" th:object="${user}" method="POST">
+        <form th:action="@{/saveuser}" th:object="${user}" method="POST">
             <input type="text" th:field="*{name}" placeholder="User Name">
             <input type="text" th:field="*{password}" placeholder="User Password">
+            <input type="text" th:field="*{balance}" placeholder="User Balance">
             <button type="submit">Save User</button>
         </form>
  
         <hr>
  
-        <a th:href="@{/home}"> Back to User List</a>
+        <a th:href="@{/home}"> Back to Home</a>
     </div>
 </body>
 </html>

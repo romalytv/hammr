@@ -19,9 +19,11 @@ public class UserConfig {
 
         user1.setName("Abba");
         user1.setPassword("1234");
+        user1.setBalance(1000);
 
         user2.setName("Boba");
         user2.setPassword("qwer");
+        user2.setBalance(1000);
 
         userRepository.saveAll(List.of(user1, user2));
 

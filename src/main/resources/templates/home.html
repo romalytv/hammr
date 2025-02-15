@@ -17,15 +17,35 @@
 		<tr>
 			<th>Name</th>
 			<th>Password</th>
+			<th>Balance</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="user : ${allUserList}">
 			<td th:text="${user.name}"></td>
 			<td th:text="${user.password}"></td>
+			<td th:text="${user.balance}"></td>
 			<td> <a th:href="@{/updateuser/{id} (id=${user.id})}" class="button is-link is-outlined">Update</a>
 				 <a th:href="@{/deleteuser/{id} (id=${user.id})}" class="button is-danger is-outlined">Delete</a>
 			</td>
+		</tr>
+	</tbody>
+</table>
+<h3>Auction List</h3>
+<a th:href="@{/createauction}">Create Auction</a>
+<table border="1" class = "table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Creator</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="auction : ${allAuctionList}">
+			<td th:text="${auction.lotName}"></td>
+			<td th:text="${auction.lotPrice}"></td>
+			<td th:text="${auction.creatorOfLot}"></td>
 		</tr>
 	</tbody>
 </table>

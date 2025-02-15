@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import proj.hammr.hammr.Auction.AuctionService;
+
 @Controller
 @RequestMapping("/")
 public class UserController {
@@ -15,9 +17,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuctionService auctionService;
+
     @RequestMapping(value = "home", method = RequestMethod.GET)
-    public String userView(Model model) {
+    public String homeView(Model model) {
         model.addAttribute("allUserList", userService.getAllUser());
+        model.addAttribute("allAuctionList", auctionService.getAllAuctionEntitys());
         return "home";
     }
 
@@ -29,7 +35,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = "save", method = RequestMethod.POST)
+    @RequestMapping(value = "saveuser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") UserEntity user) {
         userService.save(user);
         return "redirect:/home";

@@ -1,6 +1,5 @@
 package proj.hammr.hammr.Auction;
 
-import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.UUID;
 
@@ -8,6 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import proj.hammr.hammr.User.UserEntity;
 
 @Entity
@@ -17,9 +20,19 @@ public class AuctionEntity {
     @GeneratedValue(strategy=GenerationType.UUID)
     private UUID id;
     private String lotName;
-    private BufferedImage lotImage;
+    private String lotImageUrl;
     private long lotPrice;
+
+    @ManyToMany
+    @JoinTable(
+        name = "auction_users",
+        joinColumns = @JoinColumn(name = "auction_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<UserEntity> usersOnLot;
+
+    @ManyToOne
+    @JoinColumn(name = "creator_id", nullable = true)
     private UserEntity creatorOfLot;
 
     public UUID getId() {
@@ -30,8 +43,8 @@ public class AuctionEntity {
         return lotName;
     }
 
-    public BufferedImage getLotImage() {
-        return lotImage;
+    public String getLotImageUrl() {
+        return lotImageUrl;
     }
 
     public long getLotPrice() {
@@ -46,8 +59,8 @@ public class AuctionEntity {
         this.lotName = lotName;
     }
 
-    public void setLotImage(BufferedImage lotImage) {
-        this.lotImage = lotImage;
+    public void setLotImageUrl(String lotImageUrl) {
+        this.lotImageUrl = lotImageUrl;
     }
 
     public void setLotPrice(long lotPrice){
